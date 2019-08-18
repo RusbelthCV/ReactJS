@@ -8,6 +8,8 @@ import Mosca from './Mosca';
 import Capital from './Capital';
 import Gato from './Gato';
 import BolaBingo from './BolaBingo';
+import FotoBola from './FotoBola';
+import Marco from './Marco';
 
 class App extends React.Component{
   render()
@@ -21,6 +23,8 @@ class App extends React.Component{
         <Capital nom = "barcelona" />
         <Gato ancho="200" alto="200" nombre="Garfield" />
         <BolaBingo num="22" />
+        <FotoBola src="http://lorempixel.com/200/200" talla="200" />
+        <Marco src="http://lorempixel.com/200/300" borde="10" color="brown" fondo="beige" />
       </div>
     );
   }
