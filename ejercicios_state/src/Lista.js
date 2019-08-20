@@ -1,45 +1,54 @@
 import React from 'react';
 
 class Lista extends React.Component {
+    
     constructor(props) {
         super(props);
         this.state = {
             ciudades: this.props.items,
             ciudadesFiltradas: this.props.items
         };
+        this.busqueda = this.busqueda.bind(this);
+    }
+    busqueda(e){
+        let ciudad = e.target.value.toLowerCase();
+        let ciudadArray = (this.props.items).filter(element => element.toLowerCase().indexOf(ciudad) > -1);
+        this.setState({
+            ciudades: this.props.items,
+            ciudadesFiltradas: ciudadArray
+        });
     }
     render() {
-        console.log(this.state.ciudades);
-        let array = this.props.items;
+        let array = this.state.ciudadesFiltradas;
         const content = array.map((valor) => <tr key={valor}>
             <td>
                 {valor}
             </td>
-        </tr>)
+        </tr>);
         return (
-            <div className="table-responsive">
-                <table className="table">
-                    <thead className="table-dark">
-                        <tr>
-                            <td>Ciudad</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {content}
-                    </tbody>
-                </table>
-            </div>
-            <div className="input-group">
-                <div className="input-group-prepend">
-                    <label className="input-group-text">Buscar</label>
+            <div>
+                <div className="input-group my-5">
+                    <div className="input-group-prepend">
+                        <label className="input-group-text">Buscar</label>
+                    </div>
+                    <input type="text" className="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" onKeyUp = {this.busqueda} tabIndex = "0"></input>
                 </div>
-                <input type="text" className="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"></input>
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead className="table-dark">
+                            <tr>
+                                <td>Ciudad</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {content}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         );
     }
 }
-
-
-
 
 export default Lista;
