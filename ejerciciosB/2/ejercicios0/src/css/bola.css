@@ -1,0 +1,9 @@
+.bola
+{
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: red;
+    margin: 5px;
+    display: inline-block;
+}

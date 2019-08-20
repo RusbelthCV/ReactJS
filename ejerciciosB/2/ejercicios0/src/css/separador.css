@@ -1,0 +1,11 @@
+.separador,.separador2{
+    background-color: black;
+}
+.separador
+{
+    margin-bottom: 4px;
+    height: 1px;
+}
+.separador2{
+    height: 3px;
+}
