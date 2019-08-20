@@ -10,6 +10,7 @@ import Gato from './Gato';
 import BolaBingo from './BolaBingo';
 import FotoBola from './FotoBola';
 import Marco from './Marco';
+import Icono from './Icono';
 
 class App extends React.Component{
   render()
@@ -25,6 +26,7 @@ class App extends React.Component{
         <BolaBingo num="22" />
         <FotoBola src="http://lorempixel.com/200/200" talla="200" />
         <Marco src="http://lorempixel.com/200/300" borde="10" color="brown" fondo="beige" />
+        <Icono icon1="fa-thumbs-up" icon2="fa-thumbs-down"/>
       </div>
     );
   }
