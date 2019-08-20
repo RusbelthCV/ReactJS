@@ -9,6 +9,12 @@ class Lista extends React.Component {
             ciudadesFiltradas: this.props.items
         };
         this.busqueda = this.busqueda.bind(this);
+        this.copied = this.copied.bind(this);
+    }
+    copied(e){
+        let toCopy =e.target.innerHTML;
+        let input = document.getElementsByClassName("form-control")[0];
+        input.value = toCopy;
     }
     busqueda(e){
         let ciudad = e.target.value.toLowerCase();
@@ -21,7 +27,7 @@ class Lista extends React.Component {
     render() {
         let array = this.state.ciudadesFiltradas;
         const content = array.map((valor) => <tr key={valor}>
-            <td>
+            <td onClick = {this.copied}>
                 {valor}
             </td>
         </tr>);
