@@ -6,7 +6,8 @@ class Lista extends React.Component {
         super(props);
         this.state = {
             ciudades: this.props.items,
-            ciudadesFiltradas: this.props.items
+            ciudadesFiltradas: this.props.items,
+            copia: ""
         };
         this.busqueda = this.busqueda.bind(this);
         this.copied = this.copied.bind(this);
@@ -14,10 +15,12 @@ class Lista extends React.Component {
     copied(e){
         let toCopy =e.target.innerHTML;
         let input = document.getElementsByClassName("form-control")[0];
-        input.value = toCopy;
+        this.setState({
+            copia : toCopy
+        });
     }
     busqueda(e){
-        let ciudad = e.target.value.toLowerCase();
+        let ciudad = e.target.value.toLowerCase(); 
         let ciudadArray = (this.props.items).filter(element => element.toLowerCase().indexOf(ciudad) > -1);
         this.setState({
             ciudades: this.props.items,
@@ -37,7 +40,7 @@ class Lista extends React.Component {
                     <div className="input-group-prepend">
                         <label className="input-group-text">Buscar</label>
                     </div>
-                    <input type="text" className="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" onKeyUp = {this.busqueda} tabIndex = "0"></input>
+                    <input type="text" className="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" onKeyUp = {this.busqueda} tabIndex = "0" value = {this.state.copia}></input>
                 </div>
                 <div className="table-responsive">
                     <table className="table">

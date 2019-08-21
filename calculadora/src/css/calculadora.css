@@ -1,0 +1,10 @@
+div.celda 
+{ 
+    background-color: rgb(110, 110, 119);
+    color: white;
+    height: 4vh;
+    line-height: 4vh;
+}
+div.celda:hover{
+    cursor: pointer;
+}
