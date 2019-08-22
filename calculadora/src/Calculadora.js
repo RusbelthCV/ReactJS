@@ -23,7 +23,6 @@ class Calculadora extends React.Component {
 
         valor = this.state.valor + tecla;
         if (!isNaN(tecla)) {
-            operador = tecla;
 
             if (this.state.pantalla == resultado) {
                 pantalla = "";
@@ -32,23 +31,25 @@ class Calculadora extends React.Component {
             else if(this.state.operador == "+" || this.state.operador == "-" || this.state.operador == "*" || this.state.operador == "/" ){
                 pantalla = tecla;
             }
-            else if(this.state.operador == tecla){
-                pantalla = tecla;
-            }
             else {
                 pantalla = this.state.pantalla + tecla;
             }
 
         }
         else {
-
-            pantalla = tecla;
-            if (tecla == "=") {
+            if(tecla != "=" && tecla != "C")
+            {
+                operador = tecla;
+                console.log(tecla);
+                pantalla = tecla;
+            }
+            else if (tecla == "=") {
                 pantalla = "";
                 valor = valor.slice(0, valor.length - 1);
                 resultado = eval(valor);
                 pantalla = resultado;
                 valor = resultado;
+                console.log("Operador: "+this.state.operador);
             }
             else if (tecla == "C") {
                 pantalla = "";
@@ -62,7 +63,7 @@ class Calculadora extends React.Component {
         this.setState({
             pantalla: pantalla,
             valor: valor,
-            operador: tecla
+            operador: operador
         });
 
     }
