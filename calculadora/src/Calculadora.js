@@ -9,23 +9,50 @@ class Calculadora extends React.Component {
         super(props);
         this.state = {
             pantalla: "",
-            valorInicial: ""
-        }
+            valor: "",
+            resultado: 0
+        };
 
         this.pulsa = this.pulsa.bind(this);
     }
 
     pulsa(tecla) {
-        let valor = tecla;
-        let valorNum;
-        if (!isNaN(valor)) {
-            valor = this.state.pantalla + tecla;
+        let valor, pantalla, resultado;
+
+
+        valor = this.state.valor + tecla;
+        if (!isNaN(tecla)) {
+            if (this.state.pantalla = "") {
+                pantalla = tecla;
+                console.log(pantalla);
+            }
+            else {
+                pantalla = this.state.pantalla + tecla;
+            }
+
         }
+        else {
+            pantalla = tecla;
+            if (tecla == "=") {
+                pantalla = "";
+                valor = valor.slice(0, valor.length - 1);
+                resultado = eval(valor);
+                console.log(resultado);
+                valor = "";
+                pantalla = "" + resultado;
+
+
+            }
+            else if (tecla == "C") {
+                pantalla = "";
+                valor = "";
+            }
+        }
+
         this.setState({
-            pantalla: valor,
-            valorInicial: valorNum
+            pantalla: pantalla,
+            valor: valor,
         });
-        console.log(this.state.valorInicial);
 
     }
 
